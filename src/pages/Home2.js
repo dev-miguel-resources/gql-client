@@ -24,7 +24,7 @@ const Home2 = () => {
     <div className="container">
       <div className="row p-5">
         {data.allPosts.map((p) => (
-          <div className="col-md-4" key={p.id}>
+          <div className="col-md-4 p-2" key={p.id}>
             <div className="card">
               <div className="card-body">
                 <div className="card-title">
@@ -37,8 +37,15 @@ const Home2 = () => {
         ))}
       </div>
       <div className="row p-5">
-        <button className="btn-btn-raised btn-primary">Fetch posts</button>
+        <button
+          onClick={() => fetchPosts()}
+          className="btn-btn-raised btn-primary"
+        >
+          Fetch posts
+        </button>
       </div>
+      <hr />
+      {JSON.stringify(posts)}
     </div>
   );
 };
