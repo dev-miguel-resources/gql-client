@@ -16,7 +16,8 @@ import Post from "./pages/post/Post";
 import SingleUser from "./pages/post/SingleUser";
 import PublicRoute from "./components/PublicRoute";
 import PrivateRoute from "./components/PrivateRoute";
-import Home2 from "./pages/Home2";
+//import Home2 from "./pages/Home2";
+import { Route, Switch } from "react-router-dom";
 
 const App = () => {
   const { state } = useContext(AuthContext);
@@ -28,7 +29,20 @@ const App = () => {
 
   return (
     <ApolloProvider client={client}>
-      <Home2 />
+      <Nav />
+      <ToastContainer />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/users" component={Users} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/complete-registration" component={CompleteRegistration} />
+        <Route exact path="/password/forgot" component={PasswordForgot} />
+        <Route exact path="/password/update" component={PasswordUpdate} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/post/create" component={Post} />
+        <Route exact path="/user/:usernamme" component={SingleUser} />
+      </Switch>
     </ApolloProvider>
   );
 };
