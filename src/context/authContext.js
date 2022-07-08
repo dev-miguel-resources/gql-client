@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
 
   // por implementar
   useEffect(() => {
-    
+
   }, []);
 
   const value = { state, dispatch };
