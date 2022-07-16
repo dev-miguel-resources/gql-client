@@ -5,7 +5,8 @@ import { AuthContext } from "../context/authContext";
 
 const Nav = () => {
   const { state, dispatch } = useContext(AuthContext);
-  const history = useHistory();
+  let history = useHistory();
+
   const { user } = state;
 
   const logout = () => {
@@ -18,14 +19,14 @@ const Nav = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
       <Link className="navbar-brand" to="/">
         Navbar
       </Link>
       <button
         className="navbar-toggler"
         type="button"
-        data-toggle="collapse"
+        data-toogle="collapse"
         data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
@@ -64,7 +65,6 @@ const Nav = () => {
               </li>
             </Fragment>
           )}
-
           {user && (
             <li className="nav-item active">
               <a onClick={logout} href="/login" className="nav-item nav-link">
@@ -93,3 +93,4 @@ const Nav = () => {
 };
 
 export default Nav;
+

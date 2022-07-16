@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { Route, useHistory } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
-const PublicRoute = () => {
-  return <div>Hello am PublicRoute</div>;
+const PublicRoute = ({ ...rest }) => {
+  const { state } = useContext(AuthContext);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (state.user) {
+      history.push("/profile");
+    }
+  }, [history, state.user]);
+
+  return (
+    <div className="container-fluid p-5">
+      <Route {...rest} />
+    </div>
+  )
 };
 
 export default PublicRoute;

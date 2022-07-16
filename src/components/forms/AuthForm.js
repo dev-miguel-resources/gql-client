@@ -19,7 +19,7 @@ const AuthForm = ({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="form-control"
-          placeholder="Enter Email"
+          placeholder="Enter email"
           disabled={loading}
         />
       </div>
@@ -33,7 +33,7 @@ const AuthForm = ({
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="form-control"
-          placeholder="Enter Password"
+          placeholder="Enter password"
           disabled={loading}
           required
         />

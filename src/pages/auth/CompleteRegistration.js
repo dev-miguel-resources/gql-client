@@ -10,17 +10,19 @@ const CompleteRegistration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+
+  let history = useHistory();
 
   useEffect(() => {
     setEmail(window.localStorage.getItem("emailForRegistration"));
-  }, []);
+  }, [history]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    // validation
     if (!email || !password) {
-      toast.error("Email and Password are required");
+      toast.error("Email and password is required");
       return;
     }
     try {
@@ -33,14 +35,17 @@ const CompleteRegistration = () => {
         let user = auth.currentUser;
         await user.updatePassword(password);
 
+        // dispatch user with token and email
+        // then redirect
         const idTokenResult = await user.getIdTokenResult();
-        console.log(idTokenResult);
+        console.log(idTokenResult)
         console.log(idTokenResult.token);
         dispatch({
           type: "LOGGED_IN_USER",
           payload: { email: user.email, token: idTokenResult.token },
         });
-        // process in mongodb
+        // make api request to save/update user in mongodb
+        //userCreate();
         history.push("/profile");
       }
     } catch (error) {

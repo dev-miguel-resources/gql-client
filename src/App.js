@@ -16,7 +16,6 @@ import Post from "./pages/post/Post";
 import SingleUser from "./pages/post/SingleUser";
 import PublicRoute from "./components/PublicRoute";
 import PrivateRoute from "./components/PrivateRoute";
-//import Home2 from "./pages/Home2";
 import { Route, Switch } from "react-router-dom";
 
 const App = () => {
@@ -25,6 +24,13 @@ const App = () => {
 
   const client = new ApolloClient({
     uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
+    request: (operation) => {
+      operation.setContext({
+        headers: {
+          authtoken: user ? user.token : "",
+        },
+      });
+    },
   });
 
   return (
@@ -34,14 +40,14 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/users" component={Users} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
+        <PublicRoute exact path="/register" component={Register} />
+        <PublicRoute exact path="/login" component={Login} />
         <Route exact path="/complete-registration" component={CompleteRegistration} />
         <Route exact path="/password/forgot" component={PasswordForgot} />
-        <Route exact path="/password/update" component={PasswordUpdate} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/post/create" component={Post} />
-        <Route exact path="/user/:usernamme" component={SingleUser} />
+        <PrivateRoute exact path="/password/update" component={PasswordUpdate} />
+        <PrivateRoute exact path="/profile" component={Profile} />
+        <PrivateRoute exact path="/post/create" component={Post} />
+        <Route exact path="/user/:username" component={SingleUser} />
       </Switch>
     </ApolloProvider>
   );

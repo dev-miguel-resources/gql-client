@@ -15,9 +15,9 @@ const Register = () => {
       handleCodeInApp: true,
     };
     const result = await auth.sendSignInLinkToEmail(email, config);
-    console.log(result);
+    console.log("result", result);
     toast.success(
-      `Email is sent to ${email}, click the link to complete you registration.`
+      `Email is sent to ${email}, click the link to complete your registration.`
     );
     window.localStorage.setItem("emailForRegistration", email);
     setEmail("");
@@ -31,12 +31,7 @@ const Register = () => {
       ) : (
         <h4>Register</h4>
       )}
-      <AuthForm
-        email={email}
-        loading={loading}
-        setEmail={setEmail}
-        handleSubmit={handleSubmit}
-      />
+      <AuthForm email={email} loading={loading} setEmail={setEmail} handleSubmit={handleSubmit} />
     </div>
   );
 };
