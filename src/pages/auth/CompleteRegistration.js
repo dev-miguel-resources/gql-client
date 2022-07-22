@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import AuthForm from "../../components/forms/AuthForm";
 
@@ -11,11 +11,11 @@ const CompleteRegistration = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  let history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setEmail(window.localStorage.getItem("emailForRegistration"));
-  }, [history]);
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +46,7 @@ const CompleteRegistration = () => {
         });
         // make api request to save/update user in mongodb
         //userCreate();
-        history.push("/profile");
+        navigate("/profile");
       }
     } catch (error) {
       console.log("register complete error", error.message);

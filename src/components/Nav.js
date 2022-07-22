@@ -1,11 +1,11 @@
 import React, { useContext, Fragment } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "firebase";
 import { AuthContext } from "../context/authContext";
 
 const Nav = () => {
   const { state, dispatch } = useContext(AuthContext);
-  let history = useHistory();
+  const navigate = useNavigate();
 
   const { user } = state;
 
@@ -15,7 +15,7 @@ const Nav = () => {
       type: "LOGGED_IN_USER",
       payload: null,
     });
-    history.push("/login");
+    navigate("/login");
   };
 
   return (

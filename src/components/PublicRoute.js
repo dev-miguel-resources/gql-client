@@ -1,20 +1,20 @@
 import React, { useContext, useEffect } from "react";
-import { Route, useHistory } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 
-const PublicRoute = ({ ...rest }) => {
+const PublicRoute = () => {
   const { state } = useContext(AuthContext);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (state.user) {
-      history.push("/profile");
+      navigate("/profile");
     }
-  }, [history, state.user]);
+  }, [navigate, state.user]);
 
   return (
     <div className="container-fluid p-5">
-      <Route {...rest} />
+      <Outlet />
     </div>
   )
 };

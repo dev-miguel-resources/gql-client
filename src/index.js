@@ -1,15 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { AuthProvider } from "./context/authContext";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import App from "./App";
 
-ReactDOM.render(
-  <BrowserRouter>
+const container = document.getElementById("root");
+const root = createRoot(container);
+
+root.render(
+  <Router>
     <AuthProvider>
       <App />
     </AuthProvider>
-  </BrowserRouter>,
-  document.getElementById("root")
+  </Router>
 );

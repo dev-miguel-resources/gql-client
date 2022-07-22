@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoadingToRedirect = ({ path }) => {
   const [count, setCount] = useState(3);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCount((currentCount) => --currentCount);
     }, 1000);
-    count === 0 && history.push(path);
+    count === 0 && navigate(path);
     return () => clearInterval(interval); 
-  }, [count, history, path]);
+  }, [count, navigate, path]);
   
   return (
     <div className="container p-5 text-danger">

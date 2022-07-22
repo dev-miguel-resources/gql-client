@@ -1,13 +1,13 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../context/authContext";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { auth, googleAuthProvider } from "../../firebase";
 import AuthForm from "../../components/forms/AuthForm";
 
 const Login = () => {
   const { dispatch } = useContext(AuthContext);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("mchamorro@escalab.academy");
   const [password, setPassword] = useState("chillan2022");
   const [loading, setLoading] = useState(false);
@@ -28,7 +28,7 @@ const Login = () => {
             payload: { email: user.email, token: idTokenResult.token },
           });
 
-          history.push("/profile");
+          navigate("/profile");
         });
     } catch (error) {
       console.log("login error", error);
@@ -48,7 +48,7 @@ const Login = () => {
         payload: { email: user.email, token: idTokenResult.token },
       });
 
-      history.push("/profile");
+      navigate("/profile");
     })
   };
 

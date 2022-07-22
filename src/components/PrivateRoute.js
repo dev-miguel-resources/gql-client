@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Route, Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import LoadingToRedirect from "./LoadingToRedirect";
 
-const PrivateRoute = ({ ...rest }) => {
+const PrivateRoute = () => {
   const { state } = useContext(AuthContext);
   const [user, setUser] = useState(false);
 
@@ -40,7 +40,7 @@ const PrivateRoute = ({ ...rest }) => {
       <div className="row">
         <div className="col-md-4">{navLinks()}</div>
         <div className="col-md-8">
-          <Route {...rest} />
+          <Outlet />
         </div>
       </div>
     </div>
