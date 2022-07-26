@@ -40,30 +40,30 @@ const App = () => {
         <Nav />
         <ToastContainer />
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/users" element={<Users />} />
-          <Route exact path="/register" element={<PublicRoute />}>
-            <Route exact path="/register" element={<Register />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/register" element={<PublicRoute />}>
+            <Route path="/register" element={<Register />} />
           </Route>
-          <Route exact path="/login" element={<PublicRoute />}>
-            <Route exact path="/login" element={<Login />} />
+          <Route path="/login" element={<PublicRoute />}>
+            <Route path="/login" element={<Login />} />
           </Route>
-          <Route exact path="/complete-registration" element={<CompleteRegistration />} />
-          <Route exact path="/password/forgot" element={<PasswordForgot />} />
+          <Route path="/complete-registration" element={<CompleteRegistration />} />
+          <Route path="/password/forgot" element={<PasswordForgot />} />
 
-          <Route exact path="/password/update" element={<PrivateRoute />}>
-            <Route exact path="/password/update" element={<PasswordUpdate />} />
-          </Route>
-
-          <Route exact path="/profile" element={<PrivateRoute />}>
-            <Route exact path="/profile" element={<Profile />} />
+          <Route path="/password/update" element={<PrivateRoute />}>
+            <Route path="/password/update" element={<PasswordUpdate />} />
           </Route>
 
-          <Route exact path="/post/create" element={<PrivateRoute />}>
-            <Route exact path="/post/create" element={<Post />} />
+          <Route path="/profile" element={<PrivateRoute />}>
+            <Route path="/profile" element={<Profile />} />
           </Route>
 
-          <Route exact path="/user/:username" element={<SingleUser />} />
+          <Route path="/post/create" element={<PrivateRoute />}>
+            <Route path="/post/create" element={<Post />} />
+          </Route>
+
+          <Route path="/user/:username" element={<SingleUser />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Fragment>
