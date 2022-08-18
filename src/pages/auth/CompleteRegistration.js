@@ -20,11 +20,12 @@ const CompleteRegistration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // validation
+
     if (!email || !password) {
       toast.error("Email and password is required");
       return;
     }
+
     try {
       const result = await auth.signInWithEmailLink(
         email,
@@ -34,11 +35,8 @@ const CompleteRegistration = () => {
         window.localStorage.removeItem("emailForRegistration");
         let user = auth.currentUser;
         await user.updatePassword(password);
-
-        // dispatch user with token and email
-        // then redirect
         const idTokenResult = await user.getIdTokenResult();
-        console.log(idTokenResult)
+        console.log(idTokenResult);
         console.log(idTokenResult.token);
         dispatch({
           type: "LOGGED_IN_USER",
