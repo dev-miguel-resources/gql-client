@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import AuthForm from "../../components/forms/AuthForm";
+import { useMutation } from "@apollo/react-hooks";
+import { USER_CREATE } from "../../graphql/mutations";
 
 const CompleteRegistration = () => {
   const { dispatch } = useContext(AuthContext);
@@ -16,6 +18,8 @@ const CompleteRegistration = () => {
   useEffect(() => {
     setEmail(window.localStorage.getItem("emailForRegistration"));
   }, [navigate]);
+
+  const [userCreate] = useMutation(USER_CREATE);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,8 +46,7 @@ const CompleteRegistration = () => {
           type: "LOGGED_IN_USER",
           payload: { email: user.email, token: idTokenResult.token },
         });
-        // make api request to save/update user in mongodb
-        //userCreate();
+        userCreate();
         navigate("/profile");
       }
     } catch (error) {

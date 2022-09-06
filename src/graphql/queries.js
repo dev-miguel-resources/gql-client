@@ -10,6 +10,31 @@ export const PROFILE = gql`
   ${USER_INFO}
 `;
 
+export const PUBLIC_PROFILE = gql`
+  query publicProfile($username: String!) {
+    publicProfile(username: $username) {
+      _id
+      username
+      name
+      email
+      images {
+        url
+        public_id
+      }
+      about
+    }
+  }
+`;
+
+export const ALL_USERS = gql`
+  {
+    allUsers {
+      ...userInfo
+    }
+  }
+  ${USER_INFO}
+`;
+
 export const GET_ALL_POSTS = gql`
   {
     allPosts {

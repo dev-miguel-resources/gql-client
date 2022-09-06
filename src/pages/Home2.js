@@ -2,7 +2,6 @@ import React from "react";
 import { gql } from "apollo-boost";
 import { useQuery, useLazyQuery } from "@apollo/react-hooks";
 
-// Querys
 const GET_ALL_POSTS = gql`
   {
     allPosts {
