@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Fragment, useContext } from "react";
 import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "@apollo/react-hooks";
+import { ApolloProvider } from "@apollo/client";
 import { AuthContext } from "./context/authContext";
 import { ToastContainer } from "react-toastify";
 import Nav from "./components/Nav";
