@@ -32,8 +32,8 @@ const Profile = () => {
         images: omitDeep(data.profile.images, ["__typename"]),
       });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   const [userUpdate] = useMutation(USER_UPDATE, {
     update: ({ data }) => {
@@ -65,16 +65,16 @@ const Profile = () => {
           )}
         </div>
 
-        <FileUpload 
+        <FileUpload
         
         />
-        </div>
-        <UserProfile 
-            {...values}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            loading={loading}
-        />
+      </div>
+      <UserProfile
+        {...values}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        loading={loading}
+      />
     </div>
   );
 };

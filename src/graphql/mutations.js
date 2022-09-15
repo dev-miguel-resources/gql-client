@@ -1,13 +1,13 @@
 import { gql } from "apollo-boost";
-import { USER_INFO, POST_DATA } from "./fragments";
+import { USER_INFO, POST_DATA }  from "./fragments";
 
 export const USER_UPDATE = gql`
-    mutation userUpdate($input: UserUpdateInput!) {
-        userUpdate(input: $input) {
-            ...userInfo
-        }
-        ${USER_INFO}
+  mutation userUpdate($input: UserUpdateInput!) {
+    userUpdate(input: $input) {
+      ...userInfo
     }
+  }
+  ${USER_INFO}
 `;
 
 export const USER_CREATE = gql`

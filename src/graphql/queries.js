@@ -27,7 +27,7 @@ export const PUBLIC_PROFILE = gql`
 `;
 
 export const ALL_USERS = gql`
-  {
+  query {
     allUsers {
       ...userInfo
     }
@@ -35,7 +35,7 @@ export const ALL_USERS = gql`
   ${USER_INFO}
 `;
 
-export const GET_ALL_POSTS = gql`
+export const GET_ALL_POST = gql`
   {
     allPosts {
       ...postData
@@ -52,3 +52,5 @@ export const POSTS_BY_USER = gql`
   }
   ${POST_DATA}
 `;
+
+
