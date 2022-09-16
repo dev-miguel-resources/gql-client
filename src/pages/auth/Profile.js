@@ -66,7 +66,10 @@ const Profile = () => {
         </div>
 
         <FileUpload
-        
+            setValues={setValues}
+            setLoading={setLoading}
+            values={values}
+            loading={loading}
         />
       </div>
       <UserProfile
