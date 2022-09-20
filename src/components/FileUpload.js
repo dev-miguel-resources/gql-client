@@ -3,7 +3,7 @@ import Resizer from "react-image-file-resizer";
 import { AuthContext } from "../context/authContext";
 import Image from "./Image";
 
-const FileUpload = ({ setValues, setLoading, values }) => {
+const FileUpload = ({ setValues, setLoading, values, singleUpload = false, }) => {
   const { state } = useContext(AuthContext);
 
   const fileResizeAndUpload = () => {};
