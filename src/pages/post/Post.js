@@ -22,12 +22,28 @@ const Post = () => {
 
   const { content } = values;
 
-  const [postCreate] = useMutation(POST_CREATE, {});
+  const [postCreate] = useMutation(POST_CREATE, {
+    update: (cache, { data: { postCreate } }) => {
+      const { postsByUser } = cache.readQuery({
+        query: POSTS_BY_USER,
+      });
+      cache.writeQuery({
+        query: POSTS_BY_USER,
+        data: {
+          postsByUser: [postCreate, ...postsByUser],
+        },
+      });
+    },
+    onError: (err) => console.log(err.graphQLError[0].message),
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
+    postCreate({ variables: { input: values } });
+    setValues(initialState);
+    setLoading(false);
+    toast.success("Post created");
   };
 
   const handleChange = (e) => {
