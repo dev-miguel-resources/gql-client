@@ -1,7 +1,6 @@
 import { auth } from "../firebase";
 import { useReducer, useEffect, createContext } from "react";
 
-// reducer function
 const firebaseReducer = (state, action) => {
   switch (action.type) {
     case "LOGGED_IN_USER":
@@ -11,15 +10,12 @@ const firebaseReducer = (state, action) => {
   }
 };
 
-// state
 const initialState = {
   user: null,
 };
 
-// create context
 const AuthContext = createContext();
 
-// context provider
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(firebaseReducer, initialState);
 

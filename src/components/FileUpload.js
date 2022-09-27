@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Resizer from "react-image-file-resizer";
+//import Resizer from "react-image-file-resizer";
 import { AuthContext } from "../context/authContext";
 import Image from "./Image";
 

@@ -1,6 +1,5 @@
 import * as firebase from "firebase";
 
-// firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyBYQrT0YMpiNZxEvQOFyDFkFHqnkcqeLaY",
   authDomain: "gql-project-5bc58.firebaseapp.com",
@@ -10,7 +9,6 @@ const firebaseConfig = {
   appId: "1:630982817477:web:b1c098a9db1175f2d822ac",
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
