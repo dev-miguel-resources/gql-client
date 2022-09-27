@@ -1,7 +1,26 @@
 import React from "react";
+import { useQuery } from "@apollo/client";
+import { useParams } from "react-router-dom";
+import UserCard from "../../components/UserCard";
+import { PUBLIC_PROFILE } from "../../graphql/queries";
 
 const SingleUser = () => {
-  return <div>Hello am SingleUser</div>;
+
+  const params = useParams();
+
+  const { loading, data } = useQuery(PUBLIC_PROFILE, {
+    variables: { username: params.username }
+  });
+
+  if (loading) return <p className="p-5">Loading...</p>
+
+  return (
+    <div className="container">
+      <br />
+      <br />
+      <UserCard user={data.publicProfile} />
+    </div>
+  );
 };
 
 export default SingleUser;
