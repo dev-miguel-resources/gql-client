@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { AuthContext } from "../context/authContext";
-import { GET_ALL_POST } from "../graphql/queries";
+import { GET_ALL_POSTS } from "../graphql/queries";
 import PostCard from "../components/PostCard";
 
 const Home = () => {
-  const { data, loading } = useQuery(GET_ALL_POST);
-  const [fetchPosts, { data: posts }] = useLazyQuery(GET_ALL_POST);
+  const { data, loading } = useQuery(GET_ALL_POSTS);
+  const [fetchPosts, { data: posts }] = useLazyQuery(GET_ALL_POSTS);
 
   const { state } = useContext(AuthContext);
 

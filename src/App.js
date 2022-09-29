@@ -18,6 +18,7 @@ import SingleUser from "./pages/post/SingleUser";
 import PublicRoute from "./components/PublicRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import NotFound from "./pages/NotFound";
+import SearchResult from "./components/SearchResult";
 
 const App = () => {
   const { state } = useContext(AuthContext);
@@ -48,7 +49,8 @@ const App = () => {
           <Route path="/login" element={<PublicRoute />}>
             <Route path="/login" element={<Login />} />
           </Route>
-          <Route path="/complete-registration" element={<CompleteRegistration />} />
+          <Route path="/complete-registration" element={<CompleteRegistration />}
+          />
           <Route path="/password/forgot" element={<PasswordForgot />} />
 
           <Route path="/password/update" element={<PrivateRoute />}>
@@ -65,6 +67,7 @@ const App = () => {
 
           <Route path="/user/:username" element={<SingleUser />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/search/:query" element={<SearchResult />} />
         </Routes>
       </Fragment>
     </ApolloProvider>
