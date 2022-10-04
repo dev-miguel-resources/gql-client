@@ -1,14 +1,17 @@
-import React, { useContext } from "react";
-import { useQuery, useLazyQuery } from "@apollo/client";
-import { AuthContext } from "../context/authContext";
-import { GET_ALL_POSTS } from "../graphql/queries";
+import React, { useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_POSTS, TOTAL_POSTS } from "../graphql/queries";
 import PostCard from "../components/PostCard";
+import PostPagination from "../components/PostPagination";
 
 const Home = () => {
-  const { data, loading } = useQuery(GET_ALL_POSTS);
-  const [fetchPosts, { data: posts }] = useLazyQuery(GET_ALL_POSTS);
+  const [page, setPage] = useState(1);
 
-  const { state } = useContext(AuthContext);
+  const { data, loading } = useQuery(GET_ALL_POSTS, {
+    variables: { page },
+  });
+
+  const { data: postCount } = useQuery(TOTAL_POSTS);
 
   if (loading) return <p className="p-5">Loading ...</p>;
 
@@ -22,18 +25,8 @@ const Home = () => {
             </div>
           ))}
       </div>
-      <div className="row p-5">
-        <button
-          onClick={() => fetchPosts()}
-          className="btn btn-raised btn-primary"
-        >
-          Fetch Posts
-        </button>
-      </div>
-      <hr />
-      {JSON.stringify(posts)}
-      <hr />
-      {JSON.stringify(state.user)}
+
+      <PostPagination page={page} setPage={setPage} postCount={postCount} />
     </div>
   );
 };
