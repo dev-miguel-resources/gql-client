@@ -7,6 +7,8 @@ const PostPagination = ({ page, setPage, postCount }) => {
 
   const pagination = () => {
     totalPages = Math.ceil(postCount && postCount.totalPosts / 3);
+    console.log(totalPages);
+    console.log(postCount);
     if (totalPages > 10) totalPages = 10;
     let pages = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -23,8 +25,8 @@ const PostPagination = ({ page, setPage, postCount }) => {
   
   return (
     <nav>
-      <ul>
-        <li className="pagination justify-content-center">
+      <ul className="pagination justify-content-center">
+        <li>
           <a className={`page-link ${page === 1 && 'disabled'}`} onClick={() => setPage(1)}>
             First Page
           </a>
